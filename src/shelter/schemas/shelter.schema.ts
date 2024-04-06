@@ -9,7 +9,7 @@ export class Shelter {
     @Prop({required: true})
     name: string
     @Prop({required: true})
-    whatsapp: string
+    whatsApp: string
     @Prop({required: true})
     email: string
     @Prop({required: true})
@@ -17,7 +17,7 @@ export class Shelter {
     @Prop({required: true})
     createdAt: Date
     @Prop({required: true})
-    updatedAt: Date
+    updateAt: Date
 }
 
 export const ShelterSchema = SchemaFactory.createForClass(Shelter)
