@@ -20,7 +20,7 @@ export class ShelterController {
     {
         return await this.getShelterDetailsUseCase.run(null)
     }
-
+                
     @Put()
     async updateShelterDetails(@Body() input: UpdateShelterControllerInput): Promise<UpdateShelterDetailsUseCaseOutput> {
         const useCaseInput = new UpdateShelterDetailsUseCaseInput({...input});
