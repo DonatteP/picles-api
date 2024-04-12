@@ -7,7 +7,7 @@ export default class GetPetsUseCaseOutput {
     totalPages: number;
     items: PetResponse[];
 
-    constructor(data: Partial<GetPetsUseCaseInput>){
+    constructor(data: Partial<GetPetsUseCaseOutput>){
         Object.assign(this, data)
     }
 }

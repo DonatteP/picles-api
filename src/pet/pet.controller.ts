@@ -16,6 +16,7 @@ import multerConfig from 'src/config/multer.config';
 import UpdatePetPhotoByIdUseCaseInput from './usecases/dtos/update.pet.photo.by.id.usecase.input';
 import UpdatePetPhotoByIdUseCaseOutput from './usecases/dtos/update.pet.photo.by.id.usecase.output';
 import GetPetsUseCaseInput from './usecases/dtos/get.pets.usecase.input';
+import GetPetsUseCaseOutput from './usecases/dtos/get.pets.usecase.output';
 
 @Controller("pet")
 export class PetController {
@@ -31,6 +32,9 @@ export class PetController {
 
     @Inject(PetTokens.deletePetByIdUseCase)
     private readonly deletePetByIdUseCase: IUseCase<DeletePetByIdUseCaseInput, DeletePetByIdUseCaseOutput>
+
+    @Inject(PetTokens.getPetsUseCase)
+    private readonly getPetsUseCase: IUseCase<GetPetsUseCaseInput, GetPetsUseCaseOutput>
 
     @Inject(PetTokens.updatePetPhotoByIdUseCase)
     private readonly updatePetPhotoByIdUseCase: IUseCase<UpdatePetPhotoByIdUseCaseInput, UpdatePetPhotoByIdUseCaseOutput>
@@ -59,6 +63,9 @@ export class PetController {
             itemsPerPage: !!itemsPerPage ? parseInt(itemsPerPage) : DEFAULT_ITENS_PER_PAGE,
 
         })
+
+        return await this.getPetsUseCase.run(useCaseInput)
+
     }
 
     @Get(":id")
