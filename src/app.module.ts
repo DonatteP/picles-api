@@ -5,9 +5,12 @@ import { ShelterModule } from './shelter/shelter.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PetModule } from './pet/pet.module';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
-  imports: [ConfigModule.forRoot(), MongooseModule.forRootAsync({
+  imports: [ConfigModule.forRoot(), 
+    MulterModule,
+    MongooseModule.forRootAsync({
     imports: [ConfigModule],
     inject: [ConfigService],
     useFactory: async (config: ConfigService) => ({
