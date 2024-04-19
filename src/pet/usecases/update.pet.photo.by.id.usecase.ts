@@ -34,7 +34,7 @@ export default class updatePetByIdUseCase
       photo: input.photoPath,
     });
  
-    const photo = await this.fileService.readFile(input.photoPath);
+    const photo = await this.fileService.readFileInBase64(input.photoPath);
  
     return new UpdatePetPhotoByIdUseCaseOutput({
       id: pet._id,
@@ -42,7 +42,7 @@ export default class updatePetByIdUseCase
       createdAt: pet.createdAt,
       gender: pet.gender,
       name: pet.name,
-      photo: photo.toString('base64'),
+      photo: photo,
       size: pet.size,
       type: pet.type,
       updatedAt: pet.updatedAt,

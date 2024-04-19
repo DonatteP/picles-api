@@ -54,13 +54,13 @@ export class PetController {
         @Query("itemsPerPage") itemsPerPage?: string
     ){
         const FIRST_PAGE = 1
-        const DEFAULT_ITENS_PER_PAGE = 10
+        const DEFAULT_ITEMS_PER_PAGE = 10
         const useCaseInput = new GetPetsUseCaseInput({
             type: !!type ? type : null,
             size: !!size ? size : null,
             gender: !!gender ? gender : null,
-            page: !!page ? parseInt(page) : null,
-            itemsPerPage: !!itemsPerPage ? parseInt(itemsPerPage) : DEFAULT_ITENS_PER_PAGE,
+            page: !!page ? parseInt(page) : FIRST_PAGE,
+            itemsPerPage: !!itemsPerPage ? parseInt(itemsPerPage) : DEFAULT_ITEMS_PER_PAGE,
 
         })
 
@@ -104,7 +104,7 @@ export class PetController {
         }
     }
 
-    @Patch(":id/photo")
+    @Put(":id/photo")
     @UseInterceptors(FileInterceptor("photo", multerConfig))
     async updatePhoto(
         @UploadedFile() photo: Express.Multer.File,

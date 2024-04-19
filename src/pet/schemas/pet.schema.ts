@@ -22,7 +22,7 @@ export class Pet {
     @Prop({required:true})
     bio: string;
 
-    @Prop({required:true})
+    @Prop({required:true,default:null})
     photo: string;
 
     @Prop({required:true})

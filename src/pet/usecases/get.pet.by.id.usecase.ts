@@ -29,8 +29,8 @@ export default class GetPetByIdUseCase implements IUseCase<GetPetByIdUseCaseInpu
             throw new PetNotFoundError()
         }
 
-        const petPhoto = !!pet.photo ? (await this.fileService.readFile(pet.photo)).toString
-        ("base64"):null;
+        const petPhoto = !!pet.photo ? await (this.fileService.readFileInBase64(pet.photo)) : null;
+        
 
         return new GetPetByIdUseCaseOutput({
             id: pet._id,
